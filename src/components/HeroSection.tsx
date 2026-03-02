@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
+import { Search } from "lucide-react";
 import heroBg from "@/assets/hero-dubai.jpg";
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
@@ -67,6 +68,79 @@ const HeroSection = () => {
           </a>
         </motion.div>
       </div>
+
+      {/* Search Filter Bar */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.1 }}
+        className="relative z-10 w-full max-w-[900px] mx-auto mt-16 px-6"
+      >
+        <div className="backdrop-blur-xl bg-primary-foreground/10 border border-primary-foreground/15 rounded-2xl p-3 flex flex-col md:flex-row items-stretch gap-3">
+          {/* Location */}
+          <div className="flex-[2] min-w-0">
+            <label className="block text-[10px] font-medium tracking-[0.2em] uppercase text-primary-foreground/50 mb-1.5 px-4">
+              Location
+            </label>
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-primary-foreground/40" />
+              <input
+                type="text"
+                placeholder="Search Locations..."
+                className="w-full bg-primary-foreground/5 border border-primary-foreground/10 rounded-xl py-2.5 pl-10 pr-4 text-sm text-primary-foreground placeholder:text-primary-foreground/30 focus:outline-none focus:border-accent/50 transition-colors"
+              />
+            </div>
+          </div>
+
+          {/* Category */}
+          <div className="flex-1 min-w-0">
+            <label className="block text-[10px] font-medium tracking-[0.2em] uppercase text-primary-foreground/50 mb-1.5 px-4">
+              Category
+            </label>
+            <select className="w-full bg-primary-foreground/5 border border-primary-foreground/10 rounded-xl py-2.5 px-4 text-sm text-primary-foreground/80 focus:outline-none focus:border-accent/50 transition-colors appearance-none cursor-pointer">
+              <option>All</option>
+              <option>Buy</option>
+              <option>Rent</option>
+              <option>Off-Plan</option>
+            </select>
+          </div>
+
+          {/* Type */}
+          <div className="flex-1 min-w-0">
+            <label className="block text-[10px] font-medium tracking-[0.2em] uppercase text-primary-foreground/50 mb-1.5 px-4">
+              Type
+            </label>
+            <select className="w-full bg-primary-foreground/5 border border-primary-foreground/10 rounded-xl py-2.5 px-4 text-sm text-primary-foreground/80 focus:outline-none focus:border-accent/50 transition-colors appearance-none cursor-pointer">
+              <option>All</option>
+              <option>Apartment</option>
+              <option>Villa</option>
+              <option>Penthouse</option>
+              <option>Townhouse</option>
+            </select>
+          </div>
+
+          {/* Price */}
+          <div className="flex-1 min-w-0">
+            <label className="block text-[10px] font-medium tracking-[0.2em] uppercase text-primary-foreground/50 mb-1.5 px-4">
+              Price
+            </label>
+            <select className="w-full bg-primary-foreground/5 border border-primary-foreground/10 rounded-xl py-2.5 px-4 text-sm text-primary-foreground/80 focus:outline-none focus:border-accent/50 transition-colors appearance-none cursor-pointer">
+              <option>Min - Max</option>
+              <option>Under 1M AED</option>
+              <option>1M - 5M AED</option>
+              <option>5M - 15M AED</option>
+              <option>15M+ AED</option>
+            </select>
+          </div>
+
+          {/* Search Button */}
+          <div className="flex items-end">
+            <button className="w-full md:w-12 h-[42px] bg-accent rounded-xl flex items-center justify-center hover:opacity-90 transition-opacity">
+              <Search className="w-5 h-5 text-accent-foreground" />
+            </button>
+          </div>
+        </div>
+      </motion.div>
 
       {/* Scroll indicator */}
       <motion.div
