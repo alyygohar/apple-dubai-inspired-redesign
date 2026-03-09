@@ -81,7 +81,7 @@ const AboutUs = () => {
         <section className="relative min-h-[60vh] flex items-end overflow-hidden">
           <div className="absolute inset-0">
             <img src={aboutHero} alt="Dubai skyline" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-foreground/10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/60 to-foreground/40" />
           </div>
           <div className="relative z-10 section-padding pb-16 max-w-[1200px] mx-auto w-full">
             <motion.p {...fadeUp} className="text-xs font-medium tracking-[0.3em] uppercase text-accent mb-4">
