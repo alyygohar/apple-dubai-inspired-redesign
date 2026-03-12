@@ -176,7 +176,8 @@ const ConsultationModal = ({ open, onOpenChange }: ConsultationModalProps) => {
             </form>
           )}
         </div>
-      </DialogContent>
+        </DialogPrimitive.Content>
+      </DialogPortal>
     </Dialog>
   );
 };
