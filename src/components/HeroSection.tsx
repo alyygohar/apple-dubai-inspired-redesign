@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import heroBg from "@/assets/hero-dubai.jpg";
+import ConsultationModal from "./ConsultationModal";
 
 const HeroSection = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -54,12 +57,12 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a
-            href="#contact"
+          <button
+            onClick={() => setModalOpen(true)}
             className="bg-accent text-accent-foreground px-8 py-3.5 rounded-full text-sm font-medium hover:opacity-90 transition-opacity"
           >
             Schedule a Consultation
-          </a>
+          </button>
           <a
             href="#services"
             className="text-primary-foreground/90 border border-primary-foreground/30 px-8 py-3.5 rounded-full text-sm font-medium hover:bg-primary-foreground/10 transition-colors"
@@ -157,6 +160,8 @@ const HeroSection = () => {
           <div className="w-1 h-2 rounded-full bg-primary-foreground/60" />
         </motion.div>
       </motion.div>
+
+      <ConsultationModal open={modalOpen} onOpenChange={setModalOpen} />
     </section>
   );
 };
