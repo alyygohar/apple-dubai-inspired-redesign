@@ -1,11 +1,11 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import heroBg from "@/assets/hero-dubai.jpg";
-import ConsultationModal from "./ConsultationModal";
+import { useConsultation } from "./ConsultationProvider";
 
 const HeroSection = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const { open: openConsultation } = useConsultation();
+
   return (
     <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -58,7 +58,7 @@ const HeroSection = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <button
-            onClick={() => setModalOpen(true)}
+            onClick={openConsultation}
             className="bg-accent text-accent-foreground px-8 py-3.5 rounded-full text-sm font-medium hover:opacity-90 transition-opacity"
           >
             Schedule a Consultation
@@ -80,7 +80,6 @@ const HeroSection = () => {
         className="relative z-10 w-full max-w-[900px] mx-auto mt-16 px-6"
       >
         <div className="backdrop-blur-xl bg-primary-foreground/10 border border-primary-foreground/15 rounded-2xl p-3 flex flex-col md:flex-row items-stretch gap-3">
-          {/* Location */}
           <div className="flex-[2] min-w-0">
             <label className="block text-[10px] font-medium tracking-[0.2em] uppercase text-primary-foreground/50 mb-1.5 px-4">
               Location
@@ -94,8 +93,6 @@ const HeroSection = () => {
               />
             </div>
           </div>
-
-          {/* Category */}
           <div className="flex-1 min-w-0">
             <label className="block text-[10px] font-medium tracking-[0.2em] uppercase text-primary-foreground/50 mb-1.5 px-4">
               Category
@@ -107,8 +104,6 @@ const HeroSection = () => {
               <option>Off-Plan</option>
             </select>
           </div>
-
-          {/* Type */}
           <div className="flex-1 min-w-0">
             <label className="block text-[10px] font-medium tracking-[0.2em] uppercase text-primary-foreground/50 mb-1.5 px-4">
               Type
@@ -121,8 +116,6 @@ const HeroSection = () => {
               <option>Townhouse</option>
             </select>
           </div>
-
-          {/* Price */}
           <div className="flex-1 min-w-0">
             <label className="block text-[10px] font-medium tracking-[0.2em] uppercase text-primary-foreground/50 mb-1.5 px-4">
               Price
@@ -135,8 +128,6 @@ const HeroSection = () => {
               <option>15M+ AED</option>
             </select>
           </div>
-
-          {/* Search Button */}
           <div className="flex items-end">
             <button className="w-full md:w-12 h-[42px] bg-accent rounded-xl flex items-center justify-center hover:opacity-90 transition-opacity">
               <Search className="w-5 h-5 text-accent-foreground" />
@@ -160,8 +151,6 @@ const HeroSection = () => {
           <div className="w-1 h-2 rounded-full bg-primary-foreground/60" />
         </motion.div>
       </motion.div>
-
-      <ConsultationModal open={modalOpen} onOpenChange={setModalOpen} />
     </section>
   );
 };

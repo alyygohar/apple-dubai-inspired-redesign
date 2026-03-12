@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import heroImg from "@/assets/hero-dubai.jpg";
-import ConsultationModal from "./ConsultationModal";
+import { useConsultation } from "./ConsultationProvider";
 
 const CtaBanner = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const { open: openConsultation } = useConsultation();
 
   return (
     <section className="relative py-32 overflow-hidden">
@@ -33,15 +32,13 @@ const CtaBanner = () => {
             Let our experts guide you to the perfect investment.
           </p>
           <button
-            onClick={() => setModalOpen(true)}
+            onClick={openConsultation}
             className="inline-flex bg-accent text-accent-foreground px-10 py-4 rounded-full text-sm font-medium hover:opacity-90 transition-opacity"
           >
             Get Started
           </button>
         </motion.div>
       </div>
-
-      <ConsultationModal open={modalOpen} onOpenChange={setModalOpen} />
     </section>
   );
 };
