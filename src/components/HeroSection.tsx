@@ -57,12 +57,12 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a
-            href="#contact"
+          <button
+            onClick={() => setModalOpen(true)}
             className="bg-accent text-accent-foreground px-8 py-3.5 rounded-full text-sm font-medium hover:opacity-90 transition-opacity"
           >
             Schedule a Consultation
-          </a>
+          </button>
           <a
             href="#services"
             className="text-primary-foreground/90 border border-primary-foreground/30 px-8 py-3.5 rounded-full text-sm font-medium hover:bg-primary-foreground/10 transition-colors"
