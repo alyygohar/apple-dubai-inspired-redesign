@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import ConsultationModal from "./ConsultationModal";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -14,6 +15,7 @@ const navLinks = [
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const location = useLocation();
 
   const isActive = (href: string) => location.pathname === href;
@@ -45,71 +47,77 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border/50">
-      <nav className="flex items-center justify-between h-12 md:h-14 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto">
-        <Link to="/" className="text-lg font-semibold tracking-tight">
-          <span className="text-gradient-gold">Golden Key</span>
-        </Link>
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border/50">
+        <nav className="flex items-center justify-between h-12 md:h-14 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto">
+          <Link to="/" className="text-lg font-semibold tracking-tight">
+            <span className="text-gradient-gold">Golden Key</span>
+          </Link>
 
-        <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <li key={link.label}>
-              {renderLink(
-                link,
-                "text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 tracking-wide uppercase"
-              )}
-            </li>
-          ))}
-        </ul>
-
-        <Link
-          to="/about#contact"
-          className="hidden md:inline-flex text-xs font-medium bg-accent text-accent-foreground px-5 py-2 rounded-full hover:opacity-90 transition-opacity"
-        >
-          Book Consultation
-        </Link>
-
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-foreground"
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </nav>
-
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border overflow-hidden"
-          >
-            <ul className="flex flex-col items-center gap-6 py-8">
-              {navLinks.map((link) => (
-                <li key={link.label}>
-                  {renderLink(
-                    link,
-                    "text-sm font-medium text-foreground tracking-wide",
-                    () => setMobileOpen(false)
-                  )}
-                </li>
-              ))}
-              <li>
-                <Link
-                  to="/about#contact"
-                  onClick={() => setMobileOpen(false)}
-                  className="text-sm font-medium bg-accent text-accent-foreground px-6 py-2.5 rounded-full"
-                >
-                  Book Consultation
-                </Link>
+          <ul className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <li key={link.label}>
+                {renderLink(
+                  link,
+                  "text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 tracking-wide uppercase"
+                )}
               </li>
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+            ))}
+          </ul>
+
+          <button
+            onClick={() => setModalOpen(true)}
+            className="hidden md:inline-flex text-xs font-medium bg-accent text-accent-foreground px-5 py-2 rounded-full hover:opacity-90 transition-opacity"
+          >
+            Book Consultation
+          </button>
+
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden text-foreground"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </nav>
+
+        <AnimatePresence>
+          {mobileOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border overflow-hidden"
+            >
+              <ul className="flex flex-col items-center gap-6 py-8">
+                {navLinks.map((link) => (
+                  <li key={link.label}>
+                    {renderLink(
+                      link,
+                      "text-sm font-medium text-foreground tracking-wide",
+                      () => setMobileOpen(false)
+                    )}
+                  </li>
+                ))}
+                <li>
+                  <button
+                    onClick={() => {
+                      setMobileOpen(false);
+                      setModalOpen(true);
+                    }}
+                    className="text-sm font-medium bg-accent text-accent-foreground px-6 py-2.5 rounded-full"
+                  >
+                    Book Consultation
+                  </button>
+                </li>
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+
+      <ConsultationModal open={modalOpen} onOpenChange={setModalOpen} />
+    </>
   );
 };
 

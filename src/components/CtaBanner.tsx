@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import heroImg from "@/assets/hero-dubai.jpg";
+import ConsultationModal from "./ConsultationModal";
 
 const CtaBanner = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <section className="relative py-32 overflow-hidden">
       <div className="absolute inset-0">
@@ -28,14 +32,16 @@ const CtaBanner = () => {
           <p className="apple-text-subhead text-primary-foreground/70 mb-10">
             Let our experts guide you to the perfect investment.
           </p>
-          <a
-            href="#contact"
+          <button
+            onClick={() => setModalOpen(true)}
             className="inline-flex bg-accent text-accent-foreground px-10 py-4 rounded-full text-sm font-medium hover:opacity-90 transition-opacity"
           >
             Get Started
-          </a>
+          </button>
         </motion.div>
       </div>
+
+      <ConsultationModal open={modalOpen} onOpenChange={setModalOpen} />
     </section>
   );
 };

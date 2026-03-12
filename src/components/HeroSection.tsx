@@ -160,6 +160,8 @@ const HeroSection = () => {
           <div className="w-1 h-2 rounded-full bg-primary-foreground/60" />
         </motion.div>
       </motion.div>
+
+      <ConsultationModal open={modalOpen} onOpenChange={setModalOpen} />
     </section>
   );
 };
