@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import heroBg from "@/assets/hero-dubai.jpg";
+import ConsultationModal from "./ConsultationModal";
 
 const HeroSection = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* Background Image */}
