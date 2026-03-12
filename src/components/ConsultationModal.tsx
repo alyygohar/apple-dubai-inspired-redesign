@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogDescription,
+  DialogOverlay,
+  DialogPortal,
+  DialogClose,
 } from "@/components/ui/dialog";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 
 interface ConsultationModalProps {
   open: boolean;
