@@ -4,6 +4,9 @@ import { Search, MapPin, Bed, Bath, Maximize, SlidersHorizontal } from "lucide-r
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactSection from "@/components/ContactSection";
+import DubaiAdvantages from "@/components/DubaiAdvantages";
+import ServicesSection from "@/components/ServicesSection";
+import StatsSection from "@/components/StatsSection";
 import { useConsultation } from "@/components/ConsultationProvider";
 import palmImg from "@/assets/palm-jumeirah.jpg";
 import penthouseImg from "@/assets/penthouse-interior.jpg";
@@ -415,6 +418,15 @@ const Properties = () => {
             )}
           </div>
         </section>
+
+        {/* Why Dubai */}
+        <DubaiAdvantages />
+
+        {/* Why Us */}
+        <ServicesSection />
+
+        {/* Awards & Recognition */}
+        <StatsSection />
 
         {/* CTA */}
         <section className="section-padding bg-sand">
