@@ -419,6 +419,15 @@ const Properties = () => {
           </div>
         </section>
 
+        {/* Why Dubai */}
+        <DubaiAdvantages />
+
+        {/* Why Us */}
+        <ServicesSection />
+
+        {/* Awards & Recognition */}
+        <StatsSection />
+
         {/* CTA */}
         <section className="section-padding bg-sand">
           <div className="max-w-[800px] mx-auto text-center">
