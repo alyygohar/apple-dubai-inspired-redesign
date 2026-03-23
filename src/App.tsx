@@ -7,6 +7,7 @@ import { ConsultationProvider } from "@/components/ConsultationProvider";
 import Index from "./pages/Index";
 import AboutUs from "./pages/AboutUs";
 import Blog from "./pages/Blog";
+import Properties from "./pages/Properties";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
