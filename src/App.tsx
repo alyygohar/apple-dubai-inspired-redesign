@@ -21,6 +21,7 @@ const App = () => (
         <ConsultationProvider>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/properties" element={<Properties />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/blog" element={<Blog />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
