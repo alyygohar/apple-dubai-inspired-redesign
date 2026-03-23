@@ -7,6 +7,7 @@ import { ConsultationProvider } from "@/components/ConsultationProvider";
 import Index from "./pages/Index";
 import AboutUs from "./pages/AboutUs";
 import Blog from "./pages/Blog";
+import Properties from "./pages/Properties";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ const App = () => (
         <ConsultationProvider>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/properties" element={<Properties />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/blog" element={<Blog />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
