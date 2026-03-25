@@ -7,8 +7,7 @@ import { useConsultation } from "./ConsultationProvider";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Properties", href: "/properties" },
-  { label: "Off-Plan", href: "#", disabled: true },
-  { label: "Sell", href: "#", disabled: true },
+  { label: "Sell", href: "/sell" },
   { label: "Blog", href: "/blog" },
   { label: "About Us", href: "/about" },
 ];
