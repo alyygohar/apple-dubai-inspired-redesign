@@ -7,8 +7,7 @@ import { useConsultation } from "./ConsultationProvider";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Properties", href: "/properties" },
-  { label: "Off-Plan", href: "#", disabled: true },
-  { label: "Sell", href: "#", disabled: true },
+  { label: "Sell", href: "/sell" },
   { label: "Blog", href: "/blog" },
   { label: "About Us", href: "/about" },
 ];
@@ -21,13 +20,6 @@ const Header = () => {
   const isActive = (href: string) => location.pathname === href;
 
   const renderLink = (link: typeof navLinks[0], className: string, onClick?: () => void) => {
-    if (link.disabled) {
-      return (
-        <span className={`${className} opacity-40 cursor-not-allowed`}>
-          {link.label}
-        </span>
-      );
-    }
     if (link.href.startsWith("/")) {
       return (
         <Link
