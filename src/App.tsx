@@ -9,6 +9,7 @@ import AboutUs from "./pages/AboutUs";
 import Blog from "./pages/Blog";
 import Properties from "./pages/Properties";
 import PropertyDetail from "./pages/PropertyDetail";
+import Sell from "./pages/Sell";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
